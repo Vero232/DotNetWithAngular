@@ -6,9 +6,15 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: myAllowSpecificOrigins, builder =>
     {
-        builder.WithOrigins("https://localhost:7151/")
+        //        builder.WithOrigins("https://localhost:7151/")
+        //.AllowAnyMethod()
+        //.AllowAnyHeader()
+        //.AllowAnyOrigin();
+        builder.AllowAnyOrigin()
         .AllowAnyMethod()
         .AllowAnyHeader();
+       
+        
 
 
     });
@@ -24,7 +30,7 @@ if (!app.Environment.IsDevelopment())
 }
 //Enable CORS
 
-;
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
